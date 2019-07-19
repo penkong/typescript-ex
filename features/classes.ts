@@ -23,6 +23,9 @@ console.log(vehicle.color);
 class Car extends Vehicle {
   // can not call private outside of class
   // we can not override modifier in child class
+  constructor(public wheels: number, color: string) {
+    super(color);
+  }
   private drive(): void {
     console.log("rung kung");
   }
@@ -32,7 +35,7 @@ class Car extends Vehicle {
   }
 }
 
-// const car = new Car();
+const car = new Car(5, "red");
 // car.startDrivingProcess();
 // car.honk();
 
