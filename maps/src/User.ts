@@ -2,7 +2,7 @@
 // those created by Definitely Typed project
 import faker from "faker";
 
-class User {
+export class User {
   name: string;
   // it will be a obj or string but we need init that in below
   location: {
