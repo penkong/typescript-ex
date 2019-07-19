@@ -30,3 +30,35 @@ let point: { x: number; y: number } = {
   x: 10,
   y: 20
 };
+
+// funcs
+// what in come and what return
+const logNums: (i: number) => void = (i: number) => {
+  console.log(i);
+};
+
+// inference type if var declare = var initialization
+// if both on same line ts will figure type
+
+// when annotations we use
+// 1) func that return any type
+const json = '{"x": 10, "y": 20}';
+const coords: { x: number; y: number } = JSON.parse(json);
+
+// 2) more than on line declaration
+let words = ["red", "blue"];
+let foundWord: boolean;
+for (let i = 0; i < words.length; i++) {
+  if (words[i] === "blue") {
+    foundWord = true;
+  }
+}
+
+// 3) vars that cannot be inferred correctly
+let nums = [10, -1, 132];
+let numAboveZero: boolean | number = false;
+for (let i = 0; i < nums.length; i++) {
+  if (nums[i] > 0) {
+    numAboveZero = nums[i];
+  }
+}
