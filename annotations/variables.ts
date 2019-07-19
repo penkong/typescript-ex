@@ -40,7 +40,7 @@ const logNums: (i: number) => void = (i: number) => {
 // inference type if var declare = var initialization
 // if both on same line ts will figure type
 
-// when annotations we use
+// when annotations we use for vars
 // 1) func that return any type
 const json = '{"x": 10, "y": 20}';
 const coords: { x: number; y: number } = JSON.parse(json);
