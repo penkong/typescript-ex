@@ -1,6 +1,8 @@
+import { Sortable } from './Sorter';
+
 //
 
-export class NumbersCollection {
+export class NumbersCollection implements Sortable {
   // reference to data we want to sort
   constructor(public data: number[]) {}
   get length(): number {
