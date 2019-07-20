@@ -1,3 +1,5 @@
+import { Sortable } from './Sorter';
+
 // interfaces are contract between two classes
 
 class Node {
@@ -5,7 +7,7 @@ class Node {
   constructor(public data: number) {}
 }
 
-export class LinkedList {
+export class LinkedList implements Sortable {
   head: Node | null = null;
 
   add(data: number): void {
