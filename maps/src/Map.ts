@@ -3,12 +3,16 @@
 // interface is description of how the obj should be
 // obj must satisfy interface then can use methods on classes
 // instructions for other classes
-interface Mappable {
+export interface Mappable {
   location: {
     lat: number;
     lng: number;
   };
+
+  markerContent(): string;
+  color: string;
 }
+
 export class Map {
   private googleMap: google.maps.Map;
   constructor(divId: string) {
@@ -20,15 +24,22 @@ export class Map {
       }
     });
   }
+
   // using interfaces to not use multi addMarker(methods);
   addMarker(mappable: Mappable): void {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       // which map i use there is 5(bing , yahoo ,...) of them? this.googleMap
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
+    });
+    marker.addListener('click', () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: mappable.markerContent()
+      });
+      infoWindow.open(this.googleMap, marker);
     });
   }
 }
