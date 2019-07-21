@@ -1,6 +1,7 @@
 import { dateStringToDate } from '../utilsAndEnum/utils';
 import { MatchResultEnum } from '../utilsAndEnum/MatchResultEnum';
 import { MatchData } from '../Summary/MatchData';
+import { CsvReaderFile } from './CsvReaderFile';
 
 // its tuples
 
@@ -16,10 +17,14 @@ export interface DataReader {
 // blue print to match themselves with MatchReader
 // csvFileReader is DataReader come here and seat in reader
 export class MatchReader {
+  static fromCsv(fileName: string): MatchReader {
+    return new MatchReader(new CsvReaderFile(fileName));
+  }
   matches: MatchData[] = [];
   // reader == csvReaderFile
   // magic come by reader (can many other class seat here)
   constructor(public reader: DataReader) {}
+
   load(): void {
     // this.reader is csvFileReader in reality
     // this.reader.read() is entire loading process
