@@ -1,16 +1,8 @@
 import { dateStringToDate } from '../utilsAndEnum/utils';
 import { MatchResultEnum } from '../utilsAndEnum/MatchResultEnum';
+import { MatchData } from '../MatchData';
 
 // its tuples
-type MatchData = [
-  Date,
-  string,
-  string,
-  number,
-  number,
-  MatchResultEnum,
-  string
-];
 
 export interface DataReader {
   data: string[][];
