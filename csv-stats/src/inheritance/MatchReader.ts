@@ -1,7 +1,7 @@
 import { CsvFileReader } from './CsvFileReader';
-import { dateStringToDate } from './utils';
+import { dateStringToDate } from '../utilsAndEnum/utils';
 // enum
-import { MatchResultEnum } from './MatchResultEnum';
+import { MatchResultEnum } from '../MatchResultEnum';
 
 // its tuples
 type MatchData = [
