@@ -1,7 +1,7 @@
 //
 import fs from 'fs';
 import { dateStringToDate } from '../utilsAndEnum/utils';
-import { MatchResultEnum } from '../MatchResultEnum';
+import { MatchResultEnum } from '../utilsAndEnum/MatchResultEnum';
 // its tuples
 type MatchData = [
   Date,

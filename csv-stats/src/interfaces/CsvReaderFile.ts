@@ -4,9 +4,10 @@ import { DataReader } from './MatchReader';
 
 // second refactor
 // it is reusable for future to read file
-export class CsvReaderFile {
+export class CsvReaderFile implements DataReader {
   // read from right arr that has MatchData tuples
   data: string[][] = [];
+  // file name will receive
   constructor(public fileName: string) {}
 
   read(): void {
