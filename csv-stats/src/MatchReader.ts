@@ -1,10 +1,21 @@
 import { CsvFileReader } from './CsvFileReader';
 import { dateStringToDate } from './utils';
 // enum
-import { MatchResult } from './MatchResult';
+import { MatchResultEnum } from './MatchResultEnum';
 
-export class MatchReader extends CsvFileReader {
-  mapRow(row: string): MatchData {
+// its tuples
+type MatchData = [
+  Date,
+  string,
+  string,
+  number,
+  number,
+  MatchResultEnum,
+  string
+];
+
+export class MatchReader extends CsvFileReader<MatchData> {
+  mapRow(row: string[]): MatchData {
     return [
       dateStringToDate(row[0]),
       row[1],
@@ -12,7 +23,7 @@ export class MatchReader extends CsvFileReader {
       parseInt(row[3]),
       parseInt(row[4]),
       // its type assertion
-      row[5] as MatchResult,
+      row[5] as MatchResultEnum,
       row[6]
     ];
   }

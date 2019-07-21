@@ -1,17 +1,29 @@
 //
 import fs from 'fs';
 import { dateStringToDate } from './utils';
-import { MatchResult } from './MatchResult';
-
+import { MatchResultEnum } from './MatchResultEnum';
 // its tuples
-type MatchData = [Date, string, string, number, number, MatchResult, string];
+type MatchData = [
+  Date,
+  string,
+  string,
+  number,
+  number,
+  MatchResultEnum,
+  string
+];
 
 // first style refactor
-export abstract class CsvFileReader {
+
+// we are going use of generics instead of specific type for reusabilit
+// generic are like args for class ( types for class/funcs);
+// generic allow to define type of prop arg return for future;
+// generic <TypeOfDataWePass> generic is var for types
+export abstract class CsvFileReader<T> {
   // read from right arr that has MatchData tuples
-  data: MatchData[] = [];
+  data: T[] = [];
   constructor(public fileName: string) {}
-  abstract mapRow(row: string[]): MatchData;
+  abstract mapRow(row: string[]): T;
   read(): void {
     this.data = fs
       .readFileSync(this.fileName, {
@@ -30,10 +42,7 @@ export abstract class CsvFileReader {
   }
 }
 
-
-
-
-
+//
 class CsvFileReaders {
   // read from right arr that has MatchData tuples
   data: MatchData[] = [];
@@ -62,7 +71,7 @@ class CsvFileReaders {
             parseInt(row[3]),
             parseInt(row[4]),
             // its type assertion
-            row[5] as MatchResult,
+            row[5] as MatchResultEnum,
             row[6]
           ];
         }

@@ -6,7 +6,7 @@
 // we use enum for definite set of data not categories of movie or any async req
 // not for large set of values;
 
-export enum MatchResult {
+export enum MatchResultEnum {
   HomeWin = 'H',
   AwayWin = 'A',
   Draw = 'D'
