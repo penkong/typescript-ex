@@ -13,8 +13,30 @@ export interface Sortable {
   compare(leftIndex: number, rightIndex: number): boolean;
   swap(leftIndex: number, rightIndex: number): void;
 }
+// make sorter class to abstract class to let him know about compare and swap method
+// abstract class can not create obj ( no instances );
+// its only parent,
+// refer to methods that does not exist like compare ...
+// child promise to implement methods
+export abstract class Sorter {
+  // we promise ts every child have this methods specificity
+  abstract length: number;
+  abstract compare(leftIndex: number, rightIndex: number): boolean;
+  abstract swap(leftIndex: number, rightIndex: number): void;
 
-export class Sorter {
+  sort(): void {
+    const { length } = this;
+
+    for (let i = 0; i < length; i++) {
+      for (let j = 0; j < length - i - 1; j++) {
+        if (this.compare(j, j + 1)) {
+          this.swap(j, j + 1);
+        }
+      }
+    }
+  }
+}
+class Sort {
   constructor(public collection: Sortable) {}
   sort(): void {
     const { length } = this.collection;
