@@ -2,7 +2,7 @@
 import { CsvFileReader } from './CsvFileReader';
 import { MatchResult } from './MatchResult';
 
-// parse
+// parse - reusable
 const reader = new CsvFileReader('football.csv');
 reader.read();
 // analyze
