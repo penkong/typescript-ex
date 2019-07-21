@@ -6,7 +6,8 @@
 // }
 // (union type : string | num ) use both common to derive .
 // not idea code.
-
+// interfaces or abstract classes?
+// for diff obj vs when building a definition of an obj
 export interface Sortable {
   // getters come like props
   length: number;

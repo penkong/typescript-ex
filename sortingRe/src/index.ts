@@ -7,13 +7,15 @@ import { CharactersCollection } from './CharactersCollection';
 import { LinkedList } from './LinkedList';
 
 // const numbersCollection = new NumbersCollection([10, 3, 5, 7, -2]);
-// const sorter = new Sorter(numbersCollection);
-// sorter.sort();
+// numbersCollection.sort();
+// // const sorter = new Sorter(numbersCollection);
+// // sorter.sort();
 // console.log(numbersCollection.data);
 
 // const charactersCollection = new CharactersCollection('sfdKFRd');
-// const sorter = new Sorter(charactersCollection);
-// sorter.sort();
+// charactersCollection.sort();
+// // const sorter = new Sorter(charactersCollection);
+// // sorter.sort();
 // console.log(charactersCollection.data);
 
 const linkedList = new LinkedList();
@@ -21,6 +23,7 @@ linkedList.add(444);
 linkedList.add(4);
 linkedList.add(-44);
 linkedList.add(344);
-const sorter = new Sorter(linkedList);
-sorter.sort();
+// const sorter = new Sorter(linkedList);
+// sorter.sort();
+linkedList.sort();
 linkedList.print();
