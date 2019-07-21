@@ -1,6 +1,6 @@
 import { dateStringToDate } from '../utilsAndEnum/utils';
 import { MatchResultEnum } from '../utilsAndEnum/MatchResultEnum';
-import { MatchData } from '../MatchData';
+import { MatchData } from '../Summary/MatchData';
 
 // its tuples
 

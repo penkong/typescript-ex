@@ -15,18 +15,6 @@ matchReader.load();
 //matchReader.matches
 
 // analyze
-let manUnitedWins = 0;
-
-for (let match of matchReader.matches) {
-  if (match[1] === 'Man United' && match[5] === MatchResultEnum.HomeWin) {
-    manUnitedWins++;
-  } else if (
-    match[2] === 'Man United' &&
-    match[5] === MatchResultEnum.AwayWin
-  ) {
-    manUnitedWins++;
-  }
-}
 
 // report
 console.log(`man united won ${manUnitedWins} games`);
