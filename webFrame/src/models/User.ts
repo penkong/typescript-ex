@@ -27,4 +27,16 @@ export class User {
     this.events[eventName] = handlers;
   }
   // trigger (call) an event or call it
+  trigger(eventName: string): void {
+    const handlers = this.events[eventName];
+    if (!handlers || handlers.length === 0) return;
+    handlers.forEach(callback => {
+      callback();
+    });
+  }
+  // promises to save data and user info to backend or whatever
+  // json-server -w db.json
+  // fetcher
+  // saver
+  fetch() {}
 }
