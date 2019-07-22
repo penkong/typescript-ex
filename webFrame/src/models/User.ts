@@ -35,7 +35,8 @@ export class User {
     });
   }
   // promises to save data and user info to backend or whatever
-  // json-server -w db.json
+  // json-server -w db.json => each field on db is like route for backend
+  // "users" => /users "info" => /info
   // fetcher
   // saver
   fetch() {}

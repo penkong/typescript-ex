@@ -3,12 +3,7 @@
 // classes that represent some data
 // VIEW CLASSES
 // html producers and handle events cause by user
+import axios from 'axios';
 import { User } from './models/User';
 
-const user = new User({ name: 'fds', age: 32 });
-user.get('name');
-user.get('age');
-
-user.on('change', () => {});
-
-console.log(user);
+axios.get('http://localhost:3000/users/1');
