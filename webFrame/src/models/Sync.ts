@@ -5,7 +5,11 @@ import { UserProps } from './User';
 // serialize(saving) --> obj -> json
 // : convert data from obj into some save-able format json
 
-export class Sync {
+interface HasId {
+  id: number;
+}
+
+export class Sync<T extends HasId> {
   constructor(public rootUrl: string) {}
   // promises to save data and user info to backend or whatever
   // json-server -w db.json => each field on db is like route for backend
@@ -16,8 +20,9 @@ export class Sync {
     return axios.get(`${this.rootUrl}/${id}`);
   }
   // it bring back promise that will resolve with Generic T
-  save(data: UserProps): AxiosPromise {
+  save(data: T): AxiosPromise {
     // const id = this.get('id');
+    // using of generic constraints to find id on T
     const { id } = data;
     // post without id put need id
     if (id) {
