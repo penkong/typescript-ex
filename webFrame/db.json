@@ -4,6 +4,16 @@
       "name": "myNaame",
       "age": 20,
       "id": 1
+    },
+    {
+      "name": "new record",
+      "age": 0,
+      "id": 2
+    },
+    {
+      "name": "new record",
+      "age": 0,
+      "id": 3
     }
   ]
 }
