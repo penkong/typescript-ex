@@ -6,7 +6,7 @@ import { UserProps } from './User';
 // : convert data from obj into some save-able format json
 
 interface HasId {
-  id: number;
+  id?: number;
 }
 
 export class Sync<T extends HasId> {
@@ -24,6 +24,7 @@ export class Sync<T extends HasId> {
     // const id = this.get('id');
     // using of generic constraints to find id on T
     const { id } = data;
+    // when we add tsc --init it help us find out (type | what) on that var
     // post without id put need id
     if (id) {
       return axios.put(`${this.rootUrl}/${id}`, data);
