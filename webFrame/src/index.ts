@@ -11,3 +11,5 @@ import { User } from './models/User';
 
 // reminder of accessors => add get to method and it call by itself
 // person.fullName;
+const user = new User({ name: 'new Record', age: 323 });
+console.log(user.get('name'));
