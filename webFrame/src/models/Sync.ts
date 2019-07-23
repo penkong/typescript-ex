@@ -1,26 +1,29 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosPromise } from 'axios';
+import { UserProps } from './User';
+// deserialize(fetching) --> json -> obj
+// : put data on an obj from prior data saved json
+// serialize(saving) --> obj -> json
+// : convert data from obj into some save-able format json
 
 export class Sync {
+  constructor(public rootUrl: string) {}
   // promises to save data and user info to backend or whatever
   // json-server -w db.json => each field on db is like route for backend
   // "users" => /users "info" => /info
   // fetcher
   // saver
-  fetch(): void {
-    axios.get(`http://localhost:3000/users/${this.get('id')}`).then(
-      (res: AxiosResponse): void => {
-        this.set(res.data);
-      }
-    );
+  fetch(id: number): AxiosPromise {
+    return axios.get(`${this.rootUrl}/${id}`);
   }
-  save(): void {
-    const id = this.get('id');
+  // it bring back promise that will resolve with Generic T
+  save(data: UserProps): AxiosPromise {
+    // const id = this.get('id');
+    const { id } = data;
     // post without id put need id
     if (id) {
-      // put
-      axios.put(`http://localhost:3000/users/${id}`, this.data);
+      return axios.put(`${this.rootUrl}/${id}`, data);
     } else {
-      axios.post('http://localhost:3000/users', this.data);
+      return axios.post(this.rootUrl, data);
     }
   }
 }
