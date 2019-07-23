@@ -1,6 +1,7 @@
 import { Eventing } from './Eventing';
 import { Sync } from './Sync';
 import { Attribute } from './Attribute';
+import { AxiosResponse } from 'axios';
 
 //
 export interface UserProps {
@@ -34,5 +35,34 @@ export class User {
 
   get get() {
     return this.attributes.get;
+  }
+  // set for set attrs and fetch and save events
+  // when we set we must also trigger whole app let other know it
+  set(update: UserProps): void {
+    this.attributes.set(update);
+    this.events.trigger('change');
+  }
+
+  fetch(): void {
+    const id = this.attributes.get('id');
+    if (typeof id !== 'number') throw new Error('can not fetch without id');
+    this.sync.fetch(id).then(
+      (res: AxiosResponse): void => {
+        this.set(res.data);
+      }
+    );
+  }
+
+  save(): void {
+    this.sync
+      .save(this.attributes.getAll())
+      .then(
+        (res: AxiosResponse): void => {
+          this.trigger('save');
+        }
+      )
+      .catch(() => {
+        this.trigger('error');
+      });
   }
 }

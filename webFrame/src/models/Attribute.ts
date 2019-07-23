@@ -1,3 +1,5 @@
+import { UserProps } from './User';
+
 export class Attribute<T> {
   constructor(private data: T) {}
   // type guard if (typeof id === 'number')
@@ -11,5 +13,9 @@ export class Attribute<T> {
 
   set(update: T): void {
     Object.assign(this.data, update);
+  }
+
+  getAll(): T {
+    return this.data;
   }
 }
